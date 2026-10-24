@@ -1,0 +1,33 @@
+# Ambiente e arquivos gerados pelo Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Saída do PyInstaller e registros de compilação
+build/
+dist/
+*.log
+
+# Dados do usuário (configurações, biblioteca de pincéis/paletas e cache)
+.studio-settings.json
+.studio-library.json
+.studio-library.backup.json
+.studio-cache/
+
+# Ícones antigos; os atuais são gerados em .studio-cache/theme-icons
+assets/generated/
+
+# Modelos 3D e pincéis .abr de terceiros: não são redistribuídos (veja o README)
+assets/3D/*
+assets/3d/*
+!assets/3D/.gitkeep
+assets/Brushes/*
+!assets/Brushes/.gitkeep
+
+# Editor e sistema
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
