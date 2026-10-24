@@ -362,7 +362,7 @@ class ComicFeatures:
 
     def export_chapter_pdf(self):
         start = str(Path(self.canvas.document.path).parent) if self.canvas.document.path else ''
-        paths, _ = QFileDialog.getOpenFileNames(self, 'Páginas do capítulo', start, 'Projeto Studio (*.sdp)')
+        paths, _ = QFileDialog.getOpenFileNames(self, 'Páginas do capítulo', start, 'Projeto Lumira (*.sdp)')
         if not paths:
             return
         output, _ = QFileDialog.getSaveFileName(self, 'Salvar PDF', str(Path(paths[0]).with_name('capitulo.pdf')),

@@ -523,7 +523,7 @@ def export_pdf(paths, output, progress=None):
                 writer.setResolution(dpi)
                 writer.setPageLayout(layout)
                 writer.setTitle(Path(output).stem)
-                writer.setCreator('Studio Desenho')
+                writer.setCreator('Lumira')
                 painter = QPainter(writer)
             else:
                 writer.setPageLayout(layout)

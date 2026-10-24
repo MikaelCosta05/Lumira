@@ -17,7 +17,7 @@ COLOR_KEYS = [
 ]
 FITS = [('Preencher (cortar as sobras)', 'cover'), ('Ajustar (imagem inteira)', 'contain'), ('Esticar', 'stretch'),
         ('Lado a lado', 'tile'), ('Centralizar', 'center')]
-FILE_FILTER = 'Tema do Studio (*.studiotheme *.json)'
+FILE_FILTER = 'Tema do Lumira (*.studiotheme *.json)'
 
 DEFAULTS = {
     'preset': 'Padrão',
@@ -158,7 +158,7 @@ def rgba(color, alpha):
 def export_theme(path, settings):
     """Theme file: everything except the background image path (it is machine-specific)."""
     data = {key: value for key, value in settings.items() if key != 'background'}
-    data['format'] = 'studio-desenho-theme'
+    data['format'] = 'lumira-theme'
     with open(path, 'w', encoding='utf-8') as handle:
         json.dump(data, handle, ensure_ascii=False, indent=2)
 
@@ -167,7 +167,7 @@ def import_theme(path, current):
     with open(path, encoding='utf-8') as handle:
         data = json.load(handle)
     if not isinstance(data, dict) or not isinstance(data.get('colors', {}), dict):
-        raise ValueError('O arquivo não é um tema do Studio Desenho.')
+        raise ValueError('O arquivo não é um tema do Lumira.')
     merged = dict(current)
     merged.update({key: value for key, value in data.items() if key in DEFAULTS and key != 'background'})
     return normalize(merged)

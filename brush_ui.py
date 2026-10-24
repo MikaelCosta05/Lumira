@@ -263,7 +263,7 @@ class BrushPanel(QWidget):
     def import_menu(self):
         menu = QMenu(self)
         menu.addAction('Pincéis do Photoshop (.abr)…', lambda: self.import_file(kind='abr'))
-        menu.addAction('Pincéis do Studio (.sbrush)…', lambda: self.import_file(kind='sbrush'))
+        menu.addAction('Pincéis do Lumira (.sbrush)…', lambda: self.import_file(kind='sbrush'))
         menu.addAction('Colar código de compartilhamento…', self.import_code)
         menu.addSeparator()
         menu.addAction('Dica: arraste arquivos .abr ou .sbrush para este painel').setEnabled(False)
@@ -291,8 +291,8 @@ class BrushPanel(QWidget):
         menu.exec(self.share_button.mapToGlobal(self.share_button.rect().bottomLeft()))
 
     def import_file(self, kind=None):
-        filters = {'abr': 'Pincéis do Photoshop (*.abr)', 'sbrush': 'Pincéis do Studio (*.sbrush)'}
-        filter_text = filters.get(kind) or 'Pincéis (*.abr *.sbrush);;Photoshop (*.abr);;Studio (*.sbrush)'
+        filters = {'abr': 'Pincéis do Photoshop (*.abr)', 'sbrush': 'Pincéis do Lumira (*.sbrush)'}
+        filter_text = filters.get(kind) or 'Pincéis (*.abr *.sbrush);;Photoshop (*.abr);;Lumira (*.sbrush)'
         paths, _ = QFileDialog.getOpenFileNames(self, 'Importar pincéis', '', filter_text)
         self.import_paths(paths)
 
@@ -325,7 +325,7 @@ class BrushPanel(QWidget):
         if not brushes:
             return
         name = brushes[0].name if len(brushes) == 1 else 'Meus pincéis'
-        path, _ = QFileDialog.getSaveFileName(self, 'Exportar pincéis', f'{name}.sbrush', 'Pincéis Studio (*.sbrush)')
+        path, _ = QFileDialog.getSaveFileName(self, 'Exportar pincéis', f'{name}.sbrush', 'Pincéis Lumira (*.sbrush)')
         if path:
             if not path.lower().endswith('.sbrush'):
                 path += '.sbrush'

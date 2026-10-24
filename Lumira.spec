@@ -33,7 +33,7 @@ a = Analysis(
 pyz = PYZ(a.pure)
 exe = EXE(
     pyz, a.scripts, a.binaries, a.datas, [],
-    name='StudioDesenho',
+    name='Lumira',
     debug=False,
     strip=False,
     upx=False,

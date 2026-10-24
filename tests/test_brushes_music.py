@@ -159,6 +159,8 @@ class EngineTests(unittest.TestCase):
         restored = resources.brushes_from_code('  ' + code[:60] + '\n' + code[60:])
         self.assertEqual([b.name for b in restored], ['Aquarela', 'Carvão'])
         self.assertEqual(restored[0].wet_edges, self.brushes['Aquarela'].wet_edges)
+        old = resources.OLD_SHARE_PREFIX + code[len(resources.SHARE_PREFIX):]
+        self.assertEqual([b.name for b in resources.brushes_from_code(old)], ['Aquarela', 'Carvão'])
         with self.assertRaises(ValueError):
             resources.brushes_from_code('qualquer coisa')
         with self.assertRaises(ValueError):

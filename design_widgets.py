@@ -459,7 +459,7 @@ class LogoMark(QWidget):
         super().__init__()
         self.owner = owner
         self.setFixedSize(36, 30)
-        self.setToolTip('Studio Desenho')
+        self.setToolTip('Lumira')
 
     def paintEvent(self, event):
         c = PALETTES[self.owner.theme]

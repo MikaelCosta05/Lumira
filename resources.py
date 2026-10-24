@@ -583,7 +583,8 @@ def _builtin_brushes():
 
 TOOL_PRESETS = {'brush': 'Redondo sólido', 'pencil': 'Lápis HB', 'pen': 'Caneta nanquim'}
 
-SHARE_PREFIX = 'STUDIO-PINCEL:'
+SHARE_PREFIX = 'LUMIRA-PINCEL:'
+OLD_SHARE_PREFIX = 'STUDIO-PINCEL:'  # codes shared before the rename
 
 
 def share_code(brushes):
@@ -594,11 +595,12 @@ def share_code(brushes):
 
 def brushes_from_code(text):
     text = ''.join(text.split())
-    if not text.startswith(SHARE_PREFIX):
-        raise ValueError('O texto não é um código de pincel do Studio Desenho.')
+    prefix = next((p for p in (SHARE_PREFIX, OLD_SHARE_PREFIX) if text.startswith(p)), None)
+    if not prefix:
+        raise ValueError('O texto não é um código de pincel do Lumira.')
     try:
         decompressor = zlib.decompressobj()
-        raw = decompressor.decompress(base64.b64decode(text[len(SHARE_PREFIX):]), 64_000_000)
+        raw = decompressor.decompress(base64.b64decode(text[len(prefix):]), 64_000_000)
         value = json.loads(raw.decode('utf-8'))
     except (ValueError, zlib.error) as error:
         raise ValueError('Código de pincel corrompido ou incompleto.') from error

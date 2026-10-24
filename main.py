@@ -1,4 +1,4 @@
-"""Studio Desenho: pintura com foco em traço firme e toque leve."""
+"""Lumira: pintura com foco em traço firme e toque leve."""
 import json
 import os
 import sys
@@ -64,7 +64,7 @@ class MainWindow(ComicFeatures, ToolFeatures, StudioFeatures, WorkbenchUI, QMain
         self.background = appearance.Background()
         self.background.load(self.appearance['background'])
         self.language = i18n.set_language(self.settings.get('language', 'pt_BR'))
-        self.setObjectName('StudioDesenho')
+        self.setObjectName('Lumira')
         self.resize(1440, 900)
         self.setMinimumSize(960, 640)
         self.canvas = Canvas(self)
@@ -306,7 +306,7 @@ class MainWindow(ComicFeatures, ToolFeatures, StudioFeatures, WorkbenchUI, QMain
     def refresh_document(self):
         document = self.canvas.document
         name = Path(document.path).name if document.path else document.name
-        self.setWindowTitle(f'{name}{" *" if document.modified else ""} — Studio Desenho')
+        self.setWindowTitle(f'{name}{" *" if document.modified else ""} — Lumira')
         self.undo_action.setEnabled(bool(document.undo_stack))
         self.redo_action.setEnabled(bool(document.redo_stack))
         self.dimensions_label.setText(f'{document.width} × {document.height} px  ')
@@ -477,7 +477,7 @@ class MainWindow(ComicFeatures, ToolFeatures, StudioFeatures, WorkbenchUI, QMain
         self.canvas.finish_stroke()
         path = self.canvas.document.path
         if save_as or not path:
-            path, _ = QFileDialog.getSaveFileName(self, 'Salvar projeto com camadas', path or 'Meu desenho.sdp', 'Projeto Studio (*.sdp)')
+            path, _ = QFileDialog.getSaveFileName(self, 'Salvar projeto com camadas', path or 'Meu desenho.sdp', 'Projeto Lumira (*.sdp)')
             if not path:
                 return False
             if not path.lower().endswith('.sdp'):
@@ -586,7 +586,7 @@ def run(persist=True, ready=None):
     """Start the studio and return the exit code once every window is closed."""
     app = QApplication.instance() or QApplication(sys.argv)
     app.setStyle('Fusion')
-    app.setApplicationName('Studio Desenho')
+    app.setApplicationName('Lumira')
     window = MainWindow(persist)
     window.show()
     import brush_engine

@@ -11,8 +11,8 @@ def run_check(report_path):
     window = None
     try:
         # Checks must never alter the user's normal settings or brush library.
-        if not os.environ.get('STUDIO_DESENHO_DATA_DIR'):
-            raise RuntimeError('Set STUDIO_DESENHO_DATA_DIR to an isolated test directory.')
+        if not os.environ.get('LUMIRA_DATA_DIR'):
+            raise RuntimeError('Set LUMIRA_DATA_DIR to an isolated test directory.')
         from app_paths import DATA_ROOT, RESOURCE_ROOT
         from PyQt6.QtWidgets import QApplication
         from PyQt6.QtGui import QColor, QFontDatabase

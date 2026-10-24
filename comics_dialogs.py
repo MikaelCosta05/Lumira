@@ -268,7 +268,7 @@ class PageNumberDialog(QDialog):
         form.addRow(buttons(self, 'Numerar', self.validate))
 
     def choose_files(self):
-        paths, _ = QFileDialog.getOpenFileNames(self, 'Páginas do quadrinho', '', 'Projeto Studio (*.sdp)')
+        paths, _ = QFileDialog.getOpenFileNames(self, 'Páginas do quadrinho', '', 'Projeto Lumira (*.sdp)')
         if paths:
             from comics import natural_key
             self.paths = sorted(paths, key=natural_key)

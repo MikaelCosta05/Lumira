@@ -8,8 +8,8 @@ $env:QT_API = 'pyqt6'
 # PyInstaller writes progress to stderr; Windows PowerShell must not treat
 # redirected progress messages as terminating errors.
 $ErrorActionPreference = 'Continue'
-& $pythonBuild -m PyInstaller --noconfirm StudioDesenho.spec
+& $pythonBuild -m PyInstaller --noconfirm Lumira.spec
 $buildExitCode = $LASTEXITCODE
 $ErrorActionPreference = 'Stop'
 if ($buildExitCode -ne 0) { throw 'Falha ao compilar o executavel.' }
-Write-Host "Executavel standalone: $PSScriptRoot\dist\StudioDesenho.exe"
+Write-Host "Executavel standalone: $PSScriptRoot\dist\Lumira.exe"

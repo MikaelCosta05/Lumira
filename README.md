@@ -1,4 +1,4 @@
-# Studio Desenho
+# Lumira
 
 Editor de pintura em Python/PyQt6. Interface inspirada na organização do Photoshop,
 com temas claro e escuro, e estabilização com seleção simples inspirada no SAI.
@@ -7,7 +7,7 @@ com temas claro e escuro, e estabilização com seleção simples inspirada no S
 
 ### Executável standalone para Windows
 
-Depois de compilado (veja abaixo), o arquivo **`dist/StudioDesenho.exe`** é a versão
+Depois de compilado (veja abaixo), o arquivo **`dist/Lumira.exe`** é a versão
 standalone para Windows de 64 bits. Copie somente esse `.exe` para o outro computador e dê
 dois cliques: não é necessário instalar Python, bibliotecas, FFmpeg ou copiar a pasta `venv`.
 Fontes, traduções e o que estiver em `assets/` (incluindo modelos 3D e pincéis `.abr` que
@@ -16,8 +16,10 @@ A primeira abertura pode levar alguns segundos enquanto os arquivos são extraí
 para uma pasta temporária. A execução não precisa de internet.
 
 Na versão compilada, configurações, biblioteca pessoal, cache e recuperação ficam
-em **`%LOCALAPPDATA%\Studio Desenho`**, para persistirem entre execuções e funcionarem
-mesmo quando a pasta do executável não permite gravação. Para transferir também
+em **`%LOCALAPPDATA%\Lumira`**, para persistirem entre execuções e funcionarem
+mesmo quando a pasta do executável não permite gravação. Se existir a pasta
+`%LOCALAPPDATA%\Studio Desenho` (nome anterior do programa), ela é renomeada para `Lumira`
+na primeira abertura, preservando os dados. Para transferir também
 os dados pessoais da versão em Python, copie `.studio-settings.json`,
 `.studio-library.json` e, se existir, `.studio-background.png` da pasta do projeto
 para essa pasta no outro PC. Uma imagem de fundo com caminho antigo pode precisar
@@ -30,7 +32,7 @@ Para recompilar após alterar o código (somente no computador de desenvolviment
 powershell -ExecutionPolicy Bypass -File .\compilar.ps1
 ```
 
-A receita está em `StudioDesenho.spec`; o resultado é `dist/StudioDesenho.exe`.
+A receita está em `Lumira.spec`; o resultado é `dist/Lumira.exe`.
 O empacotamento segue a documentação de
 [arquivos spec](https://pyinstaller.org/en/stable/spec-files.html) e
 [caminhos em execução](https://pyinstaller.org/en/stable/runtime-information.html)
@@ -287,8 +289,8 @@ proporção e opacidade, espelhamento, dispersão com quantidade, bordas úmidas
 pacote (com inversão e contraste).
 
 **Compartilhar:** exporte os selecionados em `.sbrush` ou copie um **código de texto**
-(começa com `STUDIO-PINCEL:`) para colar num chat ou e-mail; quem recebe usa
-**Importar → Colar código**.
+(começa com `LUMIRA-PINCEL:`) para colar num chat ou e-mail; quem recebe usa
+**Importar → Colar código**. Códigos antigos, que começam com `STUDIO-PINCEL:`, também funcionam.
 
 ### Paletas
 
@@ -404,7 +406,7 @@ Uma cópia de recuperação é gravada a cada minuto quando há alterações e n
 traço em andamento. Na próxima inicialização após uma interrupção, é oferecida a recuperação.
 Tema, sensibilidade, nível do estabilizador, tamanho da janela e organização dos painéis são lembrados ao fechar.
 Ao executar o código Python, esses arquivos locais ficam na própria pasta do programa;
-no executável standalone, ficam em `%LOCALAPPDATA%\Studio Desenho`.
+no executável standalone, ficam em `%LOCALAPPDATA%\Lumira`.
 
 ## Atalhos
 
@@ -472,7 +474,7 @@ A interface é executada sem janela visível nos testes. Os testes que dependem 
 
 ## Licença
 
-O código do Studio Desenho é distribuído sob a **GNU General Public License v3.0** — veja
+O código do Lumira é distribuído sob a **GNU General Public License v3.0** — veja
 [`LICENSE`](LICENSE). A GPL é exigida pelo PyQt6, que é licenciado sob GPL v3.
 
 Arquivos de terceiros:
